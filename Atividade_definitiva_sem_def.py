@@ -25,7 +25,7 @@ class Funcionario(Base):
     telefone = Column("telefone", Float)
     
     
-    def __init__(self, nome, idade, cpf, setor, funcao, salario, telefone):
+    def __init__(self, nome: str, idade: int, cpf: int, setor: str, funcao: str, salario: float, telefone: int):
         self.nome = nome
         self.idade = idade
         self.cpf = cpf
@@ -78,10 +78,10 @@ while True:
             limpar_tela()
         case "2":
             cpf_usuario = int(input("Digite o CPF: "))
-            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).all()
             for funcionarios in funcionario:
                 print(f"{funcionario.nome} - {funcionario.idade} - {funcionario.cpf} - {funcionario.setor} - {funcionario.funcao} - {funcionario.salario} - {funcionario.telefone}")
-            limpar_tela()
+            
             
         case "3":
             cpf_usuario = int(input("Digite o CPF: "))
