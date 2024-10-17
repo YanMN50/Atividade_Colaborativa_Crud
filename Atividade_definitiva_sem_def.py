@@ -18,11 +18,11 @@ class Funcionario(Base):
     
     nome = Column("nome", String)
     idade = Column("idade", Integer)
-    cpf = Column("cpf", Integer, primary_key=True)
+    cpf = Column("cpf", String, primary_key=True)
     setor = Column("setor", String)
     funcao = Column("funcao", String)
     salario = Column("salario", Float)
-    telefone = Column("telefone", Float)
+    telefone = Column("telefone", String)
     
     
     def __init__(self, nome: str, idade: int, cpf: int, setor: str, funcao: str, salario: float, telefone: int):
@@ -78,9 +78,12 @@ while True:
             limpar_tela()
         case "2":
             cpf_usuario = int(input("Digite o CPF: "))
-            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).all()
-            for funcionarios in funcionario:
+            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            if funcionario:
                 print(f"{funcionario.nome} - {funcionario.idade} - {funcionario.cpf} - {funcionario.setor} - {funcionario.funcao} - {funcionario.salario} - {funcionario.telefone}")
+            else:
+                print("Funcionário não encontrado.")
+            
             
             
         case "3":
@@ -101,7 +104,7 @@ while True:
             session.add(funcionario)
             session.commit
             print("Usuário atualizado.")
-            limpar_tela()
+            
             
         case "4":
             cpf_usuario = int(input("Digite o CPF: "))
@@ -109,7 +112,7 @@ while True:
             session.delete(funcionario)
             session.commit()
             print("Usuário deletado.")
-            limpar_tela()
+            
             
         case "5":
             lista_funcionario = session.query(Funcionario).all()
