@@ -65,7 +65,6 @@ while True:
     opcao = input("Resposta: ")
     match opcao:
         case "1": 
-            limpar_tela()
             inserir_nome = input("Digite seu nome: ")
             inserir_idade = int(input("Digite sua idade: "))
             inserir_cpf = int(input("Digite seu cpf: "))
@@ -74,7 +73,27 @@ while True:
             inserir_salario = float(input("Digite seu salario: "))
             inserir_telefone = int(input("Digite seu telefone: "))
             
-            funcionario = Funcionario(nome=inserir_nome, idade=inserir_idade, )
+            funcionario = Funcionario(nome=inserir_nome, idade=inserir_idade, cpf=inserir_cpf, setor=inserir_setor, funcao=inserir_funcao, salario=inserir_salario, telefone=inserir_telefone)
+            session.add(funcionario)
+            session.commit()
+            limpar_tela()
+            
+            
+            
+        case "2":
+            limpar_tela()
+            
+        case "3":
+            
+        case "4":
+            
+        case "5":
+            
+        case "0":
+            
+            
+            
+            
                         
             
             
