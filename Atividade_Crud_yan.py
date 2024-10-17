@@ -81,7 +81,10 @@ while True:
             
             
         case "2":
-            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            cpf_usuario = int(input("Digite o CPF: "))
+            lista_funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            for usuario in lista_funcionario:
+                print(f"{usuario.id} - {usuario.nome} - {usuario.email} - {usuario.senha}")
             limpar_tela()
             
         case "3":
