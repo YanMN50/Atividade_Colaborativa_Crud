@@ -78,8 +78,8 @@ while True:
             limpar_tela()
         case "2":
             cpf_usuario = int(input("Digite o CPF: "))
-            lista_funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
-            for funcionario in lista_funcionario:
+            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            for funcionarios in funcionario:
                 print(f"{funcionario.nome} - {funcionario.idade} - {funcionario.cpf} - {funcionario.setor} - {funcionario.funcao} - {funcionario.salario} - {funcionario.telefone}")
             limpar_tela()
             
@@ -115,8 +115,8 @@ while True:
             lista_funcionario = session.query(Funcionario).all()
             
             for funcionario in lista_funcionario:
-                print(f"{funcionario.nome} - {funcionario.idade} - {funcionario.cpf} - {funcionario.setor} - {funcionario.funcao} - {funcionario.salario} - {funcionario.telefone}")
-            limpar_tela()
+                print(f"{funcionario.nome} - {funcionario.idade} - {funcionario.cpf} - {funcionario.setor} - {funcionario.funcao} - {funcionario.salario} - {funcionario.telefone}\n")
+            
             
         case "0":
             break

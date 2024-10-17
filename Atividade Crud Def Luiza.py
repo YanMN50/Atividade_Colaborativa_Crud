@@ -58,6 +58,18 @@ def menu():
           """)
     
 def adicionar_funcionario(funcionario):
+    inserir_nome = input("Digite seu nome: ")
+    inserir_idade = int(input("Digite sua idade: "))
+    inserir_cpf = int(input("Digite seu cpf: "))
+    inserir_setor = input("Digite seu setor: ")
+    inserir_funcao = input("Digite sua função: ")
+    inserir_salario = float(input("Digite seu salario: "))
+    inserir_telefone = int(input("Digite seu telefone: "))
+    
+    funcionario = Funcionario(nome=inserir_nome, idade=inserir_idade, cpf=inserir_cpf, setor=inserir_setor, funcao=inserir_funcao, salario=inserir_salario, telefone=inserir_telefone)
+    session.add(funcionario)
+    session.commit()
+    limpar_tela()
     
 def pesquisar_funcionario(funcionario):
 def atualizar_funcionario(funcionario):
@@ -70,19 +82,7 @@ while True:
     opcao = input("Resposta: ")
     match opcao:
         case "1": 
-            inserir_nome = input("Digite seu nome: ")
-            inserir_idade = int(input("Digite sua idade: "))
-            inserir_cpf = int(input("Digite seu cpf: "))
-            inserir_setor = input("Digite seu setor: ")
-            inserir_funcao = input("Digite sua função: ")
-            inserir_salario = float(input("Digite seu salario: "))
-            inserir_telefone = int(input("Digite seu telefone: "))
-            
-            funcionario = Funcionario(nome=inserir_nome, idade=inserir_idade, cpf=inserir_cpf, setor=inserir_setor, funcao=inserir_funcao, salario=inserir_salario, telefone=inserir_telefone)
-            session.add(funcionario)
-            session.commit()
-            limpar_tela()
-            
+            salvar = adicionar_funcionario(Funcionario)
             
             
         case "2":
