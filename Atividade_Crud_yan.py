@@ -81,16 +81,37 @@ while True:
             
             
         case "2":
+            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
             limpar_tela()
             
         case "3":
+            cpf_usuario = int(input("Digite o CPF: "))
+            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            
+            novos_dados = Funcionario(
+            inserir_nome = input("Digite seu nome: "),
+            inserir_idade = int(input("Digite sua idade: ")),
+            inserir_cpf = int(input("Digite seu cpf: ")),
+            inserir_setor = input("Digite seu setor: "),
+            inserir_funcao = input("Digite sua função: "),
+            inserir_salario = float(input("Digite seu salario: ")),
+            inserir_telefone = int(input("Digite seu telefone: "))
+            )
+
+            funcionario = novos_dados
+            session.add(funcionario)
+            session.commit
+            limpar_tela()
             
         case "4":
+            funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            limpar_tela()
             
         case "5":
+            limpar_tela()
             
         case "0":
-            
+            break
             
             
             
