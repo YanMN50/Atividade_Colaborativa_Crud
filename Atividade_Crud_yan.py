@@ -16,10 +16,9 @@ Base = declarative_base()
 class Funcionario(Base):
     __tablename__ = "funcionario"
     
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
     nome = Column("nome", String)
     idade = Column("idade", Integer)
-    cpf = Column("cpf", Integer)
+    cpf = Column("cpf", Integer, primary_key=True)
     setor = Column("setor", String)
     funcao = Column("funcao", String)
     salario = Column("salario", Float)
@@ -77,9 +76,6 @@ while True:
             session.add(funcionario)
             session.commit()
             limpar_tela()
-            
-            
-            
         case "2":
             cpf_usuario = int(input("Digite o CPF: "))
             lista_funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
@@ -104,10 +100,15 @@ while True:
             funcionario = novos_dados
             session.add(funcionario)
             session.commit
+            print("Usuário atualizado.")
             limpar_tela()
             
         case "4":
+            cpf_usuario = int(input("Digite o CPF: "))
             funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
+            session.delete(funcionario)
+            session.commit()
+            print("Usuário deletado.")
             limpar_tela()
             
         case "5":
