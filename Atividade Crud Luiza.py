@@ -15,11 +15,10 @@ Base = declarative_base()
 
 class Funcionario(Base):
     __tablename__ = "funcionario"
-    
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
+
     nome = Column("nome", String)
     idade = Column("idade", Integer)
-    cpf = Column("cpf", Integer)
+    cpf = Column("cpf", Integer, primary_key=True)
     setor = Column("setor", String)
     funcao = Column("funcao", String)
     salario = Column("salario", Float)
