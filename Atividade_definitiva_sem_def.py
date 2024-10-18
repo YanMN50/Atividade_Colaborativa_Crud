@@ -90,20 +90,18 @@ while True:
             cpf_usuario = int(input("Digite o CPF: "))
             funcionario = session.query(Funcionario).filter_by(cpf = cpf_usuario).first()
             
-            novos_dados = Funcionario(
-            inserir_nome = input("Digite seu nome: "),
-            inserir_idade = int(input("Digite sua idade: ")),
-            inserir_cpf = int(input("Digite seu cpf: ")),
-            inserir_setor = input("Digite seu setor: "),
-            inserir_funcao = input("Digite sua função: "),
-            inserir_salario = float(input("Digite seu salario: ")),
-            inserir_telefone = int(input("Digite seu telefone: "))
-            )
-
-            funcionario = novos_dados
-            session.add(funcionario)
-            session.commit
-            print("Usuário atualizado.")
+            if funcionario:
+                funcionario.nome = input("Digite seu nome: ")
+                funcionario.idade = int(input("Digite sua idade: "))
+                funcionario.setor = input("Digite seu setor: ")
+                funcionario.funcao = input("Digite sua função: ")
+                funcionario.salario = float(input("Digite seu salario: "))
+                funcionario.telefone = input("Digite seu telefone: ")
+                session.commit()  # Adicione os parênteses
+                print("Usuário atualizado.")
+            else:
+                print("Funcionário não encontrado.")
+                print("Usuário atualizado.")
             
             
         case "4":
@@ -115,6 +113,9 @@ while True:
             
             
         case "5":
+            print("="*40)
+            print(f"{"Consultando Funcionarios":^40}")
+            print("="*40)
             lista_funcionario = session.query(Funcionario).all()
             
             for funcionario in lista_funcionario:
