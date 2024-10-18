@@ -9,9 +9,10 @@ from sqlalchemy import create_engine, Column, String, Integer, Float
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # Criando banco de dados.
-db = create_engine("sqlite:///meubanco.db")
-Session = sessionmaker(bind=db)
+db_f = create_engine("sqlite:///meubanco.db")
+Session = sessionmaker(bind=db_f)
 session = Session()
+
 
 # Criando tabela.
 Base = declarative_base()
@@ -36,7 +37,7 @@ class Funcionario(Base):
         self.salario = salario
         self.telefone = telefone
         
-Base.metadata.create_all(bind=db)
+Base.metadata.create_all(bind=db_f)
 
 def limpar_tela():
     os.system("cls || clear")
