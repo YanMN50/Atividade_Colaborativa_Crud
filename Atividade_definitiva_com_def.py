@@ -1,3 +1,9 @@
+"""
+Alunos: Maria Luiza e Yan Mendes
+
+"""
+
+
 import os
 from sqlalchemy import create_engine, Column, String, Integer, Float
 from sqlalchemy.orm import sessionmaker, declarative_base
