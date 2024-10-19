@@ -5,7 +5,7 @@
 
 
 
-git """
+"""
 Alunos: Maria Luiza e Yan Mendes
 
 """
